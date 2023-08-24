@@ -243,9 +243,9 @@ class AUTSL(tfds.core.GeneratorBasedBuilder):
             labels = None
 
         if videos_path is not None:
-            samples = {tuple(f.split("_")[:2]) for f in os.listdir(videos_path)}
+            samples = {tuple(f.split("_")[:2]) for f in os.listdir(videos_path)[:5]}
         elif poses_path is not None:
-            samples = {tuple(f.split(".")[0].split("_")) for f in os.listdir(poses_path)}
+            samples = {tuple(f.split(".")[0].split("_")) for f in os.listdir(poses_path)[:5]}
         elif labels_path is not None:
             samples = {tuple(k.split("_")) for k in labels.keys()}
         else:
