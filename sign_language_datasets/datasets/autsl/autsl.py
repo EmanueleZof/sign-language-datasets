@@ -150,12 +150,14 @@ class AUTSL(tfds.core.GeneratorBasedBuilder):
             # Extract file
             os.makedirs(output_path_extracted)
 
+            """
             pwd_bytes = bytes(pwd, "utf-8") if pwd is not None else None
 
             with ZipFile(output_path, "r") as zip_obj:
                 # Loop over each file
                 for file in tqdm(iterable=zip_obj.namelist(), total=len(zip_obj.namelist())):
                     zip_obj.extract(member=file, path=output_path_extracted, pwd=pwd_bytes)
+            """
 
         return output_path_extracted
 
