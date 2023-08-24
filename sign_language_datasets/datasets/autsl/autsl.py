@@ -3,7 +3,8 @@ import csv
 import os
 from os import path
 from typing import Union, Dict
-from zipfile import ZipFile
+#from zipfile import ZipFile
+import subprocess
 
 import tensorflow as tf
 import tensorflow_datasets as tfds
@@ -158,6 +159,8 @@ class AUTSL(tfds.core.GeneratorBasedBuilder):
                 for file in tqdm(iterable=zip_obj.namelist(), total=len(zip_obj.namelist())):
                     zip_obj.extract(member=file, path=output_path_extracted, pwd=pwd_bytes)
             """
+
+            subprocess.run(['unzip', '-P', pwd, output_path, '-d', output_path_extracted])
 
         return output_path_extracted
 
